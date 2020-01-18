@@ -4,9 +4,9 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
-set :base, 'sqlite3:barbershop.db'
+set :base, 'sqlite3:barbershopBase.db'
 
-class Client<ActiveRecord::Base
+class Client < ActiveRecord::Base
 end
 
 
