@@ -1,11 +1,11 @@
 source "https://rubygems.org"
 
 gem "sinatra"
-gem "sqlite3"
-gem "activerecord"
-gem "sinatra-activerecord"
 gem "sinatra-contrib"
+gem "activerecord"
+gem "sqlite3"
+gem "sinatra-activerecord"
 
 group :development do
-	gem "tux"
+  gem "tux"
 end
