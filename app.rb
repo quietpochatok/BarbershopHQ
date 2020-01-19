@@ -4,7 +4,7 @@ require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
 
-set :database, "sqlite3:my_database.db"
+set :database, "SQLite3:my_database.db"
 
 class Client < ActiveRecord::Base
 end
@@ -14,5 +14,5 @@ end
 
 
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
+	erb :index
 end
