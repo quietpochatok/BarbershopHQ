@@ -1,12 +1,15 @@
-
+require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
 
-set :base, "sqlite3:my_database.db"
+set :database, "sqlite3:my_database.db"
 
 class Client < ActiveRecord::Base
+end
+
+class Barber < ActiveRecord::Base
 end
 
 
