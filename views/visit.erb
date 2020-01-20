@@ -8,9 +8,10 @@
  <label for="userChoiseBaber">Выберите вашего байбершопера</label>
  <select name="barber" class="form-control" id="userChoiseBaber">
  <option selected></option>
+
   <%@barberss.each do |barbers|%>
 
-  <option <%= @barber == barbers['nameBarber'] ? 'selected': '' %> value =<%= barbers['nameBarber']%>><%= barbers['nameBarber']%></option>
+  <option <%= @barber == barbers['name'] ? 'selected': '' %> value =<%= barbers['name']%>><%= barbers['name']%></option>
 
 <% end %>
 </select>
@@ -82,6 +83,4 @@ $(function() {
 });
 
 </script>
-
-
 <script src="/scripts.js"></script>

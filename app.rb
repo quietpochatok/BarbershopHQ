@@ -3,7 +3,6 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
-
 set :database, "SQLite3:my_database.db"
 
 class Client < ActiveRecord::Base
@@ -12,32 +11,41 @@ end
 class Barber < ActiveRecord::Base
 end
 
-# def init_db
-# @db= SQLite3::Database.new 'db/leprosorium.db'
-# @db.results_as_hash = true #резyльтат в виде хэша
+
+
+# def is_barber_exists? db, nameBarber
+# 	db.execute('select * from Barbers where name=?', [name:]).size > 0
 # end
 
-# #вызывается каждый раз при перезагрузке сайт/страницы
+# def seed_db db, barbers #наполняется из №47, далее итерация; and #саll №13
+# 	barbers.each do |barber|
+# 		#проверка барбера сущ-ет или нет в таблице, если нет
+# 		if !is_barber_exists? db, barber
+# 			#то добавится в таблицу с помощью ниже команды
+# 			db.execute 'insert into Barbers (nameBarber) VALUES (?)', [barber]
+# 			end
+# 		end
+
+# end
+#вызывается каждый раз при перезагрузке сайт/страницы
 # before do
 # #инициализация БД
-# init_db
-# end
+# get_dbss
 
+# end
 
 get '/' do
 	@barbers = Barber.all
-				#Barber.order 'created_at desc'
+			#Barber.order 'created_at desc'
 	erb :index
 end
-
 get '/visit' do
-	# @barberss =  db.execute 'select * from Barbers order by nameBarber'
+@barberss = Barber.order(:name)
 erb :visit
 end
 
 post '/visit' do
-		db = get_db 
-@barberss =  db.execute 'select * from Barbers order by nameBarber'
+@barberss = Barber.order(:name)
 		@userName = params[:userName]
 		@userNumber = params[:userNumber]
 		@userDateTime = params[:userDateTime]
@@ -54,20 +62,6 @@ post '/visit' do
 		return erb :visit
 	end
 
-		db = get_db
-		db.execute 'insert into
-			Users (
-					userName,
-					userNumber,
-					userDateTime,
-					barber,
-					colorpicker
-					) VALUES (?, ?, ?, ?, ?)', [@userName, @userNumber, @userDateTime, @barber, @colorpicker]
-
-
-	 @title = "Спасибо,что записались к нам, #{@userName}!"
-	 #@messageUser = "Dear #{@userName}, your phonenumber:#{@userNumber} and your date and time #{@userDateTime}, your color #{@colorpicker}. We will be waiting."
-	
-	 erb :message	
 
 end
+	
