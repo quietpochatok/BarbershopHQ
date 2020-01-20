@@ -12,17 +12,17 @@ end
 class Barber < ActiveRecord::Base
 end
 
-def init_db
-@db= SQLite3::Database.new 'db/leprosorium.db'
-@db.results_as_hash = true #резyльтат в виде хэша
-end
+# def init_db
+# @db= SQLite3::Database.new 'db/leprosorium.db'
+# @db.results_as_hash = true #резyльтат в виде хэша
+# end
 
-#вызывается каждый раз при перезагрузке сайт/страницы
-before do
-#инициализация БД
-init_db
+# #вызывается каждый раз при перезагрузке сайт/страницы
+# before do
+# #инициализация БД
+# init_db
+# end
 
-end
 
 get '/' do
 	@barbers = Barber.all
@@ -31,8 +31,7 @@ get '/' do
 end
 
 get '/visit' do
-	db = get_db 
-@barberss =  db.execute 'select * from Barbers order by nameBarber'
+	# @barberss =  db.execute 'select * from Barbers order by nameBarber'
 erb :visit
 end
 
