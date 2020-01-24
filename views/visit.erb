@@ -4,37 +4,35 @@
 
 <p> А для тех кто может в запись по интернету вот ниже форма для заполнения.</p>
 <form action="/visit" method="POST" role="form">
+ 
  <div class="form-group">
  <label for="userChoiseBaber">Выберите вашего байбершопера</label>
- <select name="barber" class="form-control" id="userChoiseBaber">
+ <select name="client[barber]" class="form-control" id="userChoiseBaber">
  <option selected></option>
-
   <%@barberss.each do |barbers|%>
-
   <option <%= @barber == barbers['name'] ? 'selected': '' %> value =<%= barbers['name']%>><%= barbers['name']%></option>
-
-<% end %>
-</select>
-</div>
+      <% end %>
+      </select>
+      </div>
 <br>
-  <div class="form-group">
+ <!--  <div class="form-group">
     <label for="exampleInputEmail1">Ваша электронная почта</label>
     <input name="userEmail" type="email" class="form-control" id="exampleInputEmail1" placeholder="Введите вашу электронная почта" aria-describedby="emailHelp" value="<%=@userEmail%>">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
+  </div> -->
 
  	 <div class="form-group">
     <label for="exampleInputName">Ваше имя и фамилия</label>
-    <input name="userName" type="text" class="form-control" id="exampleInputName" placeholder="Введите ваше имя и фамилия" value="<%=@userName%>">
+    <input name="client[name]" type="text" class="form-control" id="exampleInputName" placeholder="Введите ваше имя и фамилия" >
     </div>
     <div class="form-group">
     <label for="exampleInputNumber">Ваш номер телефона</label>
-    <input name="userNumber" type="text" class="form-control" id="exampleInputNumber" placeholder="Введите ваш номер телефона" value="<%=@userNumber%>">
+    <input name="client[phone]" type="text" class="form-control" id="exampleInputNumber" placeholder="Введите ваш номер телефона" value="">
   </div>
 
    <div class="form-group">
     <label for="exampleInput">Когда вас ждать?</label>
-    <input id="datetimepicker" id="exampleInput" name="userDateTime" type="text" class="form-control" placeholder="Введите дату и время" value="<%=@userDateTime%>">
+    <input id="datetimepicker" id="exampleInput" name="client[datestamp]" type="text" class="form-control" placeholder="Введите дату и время" value="">
   </div>
 
   
@@ -51,7 +49,7 @@
   <div class="form-group">
     <label>Палитра цветов на ваш выбор</label>
     <!--input name="userColor" type="text" class="form-control" id="exampleInputColor" placeholder="Выберите желаемый цвет"-->
-    <select name="colorpicker">
+    <select name="client[color]">
     <option value="#7bd148">Green</option>
     <option value="#5484ed">Bold blue</option>
     <option value="#a4bdfc">Blue</option>
@@ -77,7 +75,7 @@ $(function() {
   // тут я могу написать любой javascript код, который исполнится
   // после загрузки страницы
 //('select[name="colorpicker"]').simplecolorpicker();
-  $('select[name="colorpicker"]').simplecolorpicker();
+  $('select[name="client[color]"]').simplecolorpicker();
   $('#datetimepicker').datetimepicker();
 
 });
