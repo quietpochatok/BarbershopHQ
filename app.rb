@@ -6,6 +6,7 @@ require 'sinatra/activerecord'
 set :database, "SQLite3:my_database.db"
 
 class Client < ActiveRecord::Base
+
 end
 
 class Barber < ActiveRecord::Base
@@ -24,13 +25,19 @@ get '/' do
 end
 
 get '/visit' do
+@user = Client.new
 @barberss = Barber.order(:name)
 erb :visit
 end
 
 post '/visit' do
 	@user = Client.new params[:client]
-	@user.save
-erb 'thank you your '
+	if @user.save
+		erb 'Thank you choise'
+	else
+		@error = @user.errors.full_messages.first
+		erb :visit
+	end
+
 end
 	

@@ -23,11 +23,11 @@
 
  	 <div class="form-group">
     <label for="exampleInputName">Ваше имя и фамилия</label>
-    <input name="client[name]" type="text" class="form-control" id="exampleInputName" placeholder="Введите ваше имя и фамилия" >
+    <input name="client[name]" type="text" class="form-control" id="exampleInputName" placeholder="Введите ваше имя и фамилия" value="<%=@user.name%>">
     </div>
     <div class="form-group">
     <label for="exampleInputNumber">Ваш номер телефона</label>
-    <input name="client[phone]" type="text" class="form-control" id="exampleInputNumber" placeholder="Введите ваш номер телефона" value="">
+    <input name="client[phone]" type="text" class="form-control" id="exampleInputNumber" placeholder="Введите ваш номер телефона" value="<%=@user.phone%>">
   </div>
 
    <div class="form-group">
