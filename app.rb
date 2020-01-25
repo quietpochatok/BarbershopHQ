@@ -6,12 +6,12 @@ require 'sinatra/activerecord'
 set :database, "SQLite3:my_database.db"
 
 class Client < ActiveRecord::Base
-	validates :name, presence: true, length: {minimum: 4}
+	validates :name, presence: true, length: {minimum:3}
 	validates :phone, presence: true
 	validates :datestamp, presence: true
 	validates :color, presence: true
 	validates :barber, presence: true
-end
+end 
 
 class Barber < ActiveRecord::Base
 end
@@ -31,7 +31,7 @@ end
 get '/visit' do
 @user = Client.new
 # @barberss = Barber.all
-@barberss = Barber.order(:name)
+@barbers = Barber.order(:name)
 erb :visit
 end
 
