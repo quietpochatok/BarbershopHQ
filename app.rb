@@ -6,7 +6,7 @@ require 'sinatra/activerecord'
 set :database, "SQLite3:my_database.db"
 
 class Client < ActiveRecord::Base
-	validates :name, presence: true, length: {minimum:3}
+	validates :name, presence: true, length: {minimum: 2}
 	validates :phone, presence: true
 	validates :datestamp, presence: true
 	validates :color, presence: true
@@ -21,22 +21,23 @@ end
 before do
 #инициализация БД
 @barbers = Barber.all
+#данное выражение и метод позволяют заменить строчки 40, 35 и 34
 #Barber.order 'created_at desc'
 end
 
 get '/' do
-	erb :index
+	erb :barbers_list
 end
 
 get '/visit' do
 @user = Client.new
-# @barberss = Barber.all
-@barbers = Barber.order(:name)
+# # @barbers = Barber.all
+# @barberss = Barber.order(:name)
 erb :visit
 end
 
 post '/visit' do
-	@barberss = Barber.order(:name)
+	# @barberss = Barber.order(:name)
 	@user = Client.new params[:client]
 	if @user.save
 		erb 'Thank you choise'
@@ -46,4 +47,7 @@ post '/visit' do
 	end
 
 end
-	
+
+get '/barbers/:id' do
+	erb :barbers_list
+end
