@@ -20,8 +20,8 @@ end
 #вызывается каждый раз при перезагрузке сайт/страницы
 before do
 #инициализация БД
-@barbers = Barber.all
-@clients = Client.all
+	@barbers = Barber.all
+	@clients = Client.all
 #данное выражение и метод позволяют заменить строчки 40, 35 и 34
 #Barber.order 'created_at desc'
 end
@@ -31,10 +31,10 @@ get '/' do
 end
 
 get '/visit' do
-@user = Client.new
+	@user = Client.new
 # # @barbers = Barber.all
 # @barberss = Barber.order(:name)
-erb :visit
+	erb :visit
 end
 
 post '/visit' do	# @barbers = Barber.order(:name)
@@ -49,7 +49,7 @@ post '/visit' do	# @barbers = Barber.order(:name)
 end
 
 get '/barbers' do
-erb :barbers_list	
+	erb :barbers_list	
 end
 
 get '/barber/:id' do
@@ -58,7 +58,7 @@ get '/barber/:id' do
 end
 
 get '/bookings' do
-	@clients = Client.all
+	@client = Client.order(:created_at)
 	erb :bookings_list
 end
 
