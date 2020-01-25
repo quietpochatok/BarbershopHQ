@@ -6,7 +6,11 @@ require 'sinatra/activerecord'
 set :database, "SQLite3:my_database.db"
 
 class Client < ActiveRecord::Base
-
+	validates :name, presence: true, length: {minimum: 4}
+	validates :phone, presence: true
+	validates :datestamp, presence: true
+	validates :color, presence: true
+	validates :barber, presence: true
 end
 
 class Barber < ActiveRecord::Base
@@ -26,11 +30,13 @@ end
 
 get '/visit' do
 @user = Client.new
+# @barberss = Barber.all
 @barberss = Barber.order(:name)
 erb :visit
 end
 
 post '/visit' do
+	@barberss = Barber.order(:name)
 	@user = Client.new params[:client]
 	if @user.save
 		erb 'Thank you choise'
