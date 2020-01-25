@@ -57,6 +57,9 @@ get '/barber/:id' do
 	erb :barber_page
 end
 
+get '/bookings' do
+erb 'hello'
+end
 
 
 
