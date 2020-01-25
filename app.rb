@@ -48,6 +48,14 @@ post '/visit' do
 
 end
 
-get '/barbers/:id' do
-	erb :barbers_list
+get '/barbers' do
+erb :barbers_list	
 end
+
+get '/barber/:id' do
+	erb 'hi'
+end
+
+
+
+
