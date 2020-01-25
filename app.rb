@@ -21,6 +21,7 @@ end
 before do
 #инициализация БД
 @barbers = Barber.all
+@clients = Client.all
 #данное выражение и метод позволяют заменить строчки 40, 35 и 34
 #Barber.order 'created_at desc'
 end
@@ -36,8 +37,7 @@ get '/visit' do
 erb :visit
 end
 
-post '/visit' do
-	# @barberss = Barber.order(:name)
+post '/visit' do	# @barbers = Barber.order(:name)
 	@user = Client.new params[:client]
 	if @user.save
 		erb 'Thank you choise'
@@ -58,8 +58,13 @@ get '/barber/:id' do
 end
 
 get '/bookings' do
-erb 'hello'
+	@clients = Client.all
+	erb :bookings_list
 end
 
+get '/booking/:id' do
+	@client = Client.find(params[:id])
+	erb :booking_page
+end
 
 
