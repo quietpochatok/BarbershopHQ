@@ -53,7 +53,7 @@ erb :barbers_list
 end
 
 get '/barber/:id' do
-	erb 'hi'
+	erb :barber_page
 end
 
 
