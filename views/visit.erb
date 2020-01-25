@@ -9,7 +9,7 @@
  <label for="userChoiseBaber">Выберите вашего байбершопера</label>
  <select name="client[barber]" class="form-control" id="userChoiseBaber">
  <option selected></option>
-  <%@barberss.each do |barbers|%>
+  <%@barbers.each do |barbers|%>
   <option <%= @barber == barbers['name'] ? 'selected': '' %> value =<%= barbers['name']%>><%= barbers['name']%></option>
       <% end %>
       </select>
@@ -32,7 +32,7 @@
 
    <div class="form-group">
     <label for="exampleInput">Когда вас ждать?</label>
-    <input id="datetimepicker" id="exampleInput" name="client[datestamp]" type="text" class="form-control" placeholder="Введите дату и время" value="">
+    <input id="datetimepicker" id="exampleInput" name="client[datestamp]" type="text" class="form-control" placeholder="Введите дату и время" value="<%=@user.datestamp%>">
   </div>
 
   
