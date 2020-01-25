@@ -53,6 +53,7 @@ erb :barbers_list
 end
 
 get '/barber/:id' do
+	@barber = Barber.find(params[:id])
 	erb :barber_page
 end
 
