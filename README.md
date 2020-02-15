@@ -1,3 +1,5 @@
+Attention! This is a training code.
+===================================
 sinatra-bootstrap-clean
 =======================
 
